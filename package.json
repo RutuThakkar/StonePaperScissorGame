@@ -1,0 +1,15 @@
+{
+  "name": "stonepaperscissor",
+  "version": "1.0.0",
+  "description": "Game",
+  "main": "jsfile.js",
+  "scripts": {
+    "start": "node jsfile.js"
+  },
+  "author": "Rutu Thakkar",
+  "license": "ISC",
+  "dependencies": {
+    "slugify": "^1.4.4"
+  },
+  "devDependencies": {}
+}

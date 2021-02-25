@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissor</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+<style>
+    .background {
+    background-color: black;
+    border: darkturquoise 4px solid;
+    height: 500px;
+    width: 80%;
+    padding: 70px;
+    margin: 20px 20px;
+    position: relative;
+}
+
+.title{
+    position: absolute;
+    font-size: xx-large;
+    color: blanchedalmond;
+    text-align: center;
+    padding-left: 50px ;
+    margin-left: 250px;
+}
+
+.new {
+    position: absolute;
+    font-size: large;
+    color: blanchedalmond;
+    text-align: center;
+    padding-left: 50px ;
+    margin-left: 790px;
+    margin-top: 30px;
+}
+
+.new button {
+    height: 60px;
+    border-radius: 0;
+}
+
+a:active,a:visited{
+    color: bisque;
+}
+
+a:hover{
+    color: darksalmon;
+}
+
+.wrapper {
+    position: absolute;
+    border: darkgrey 4px solid;
+}
+
+.scores {
+    position: absolute;
+    color: cornsilk;
+    text-align: center;
+    margin-left: 36%;
+    margin-top: 80px;
+    border: darkgrey 4px double;
+    padding: 10px 30px;
+}
+
+.player-score,.separator,.comp-score, .compselection, .compselectionis {
+    display: inline;
+}
+
+.playername,.comp {
+    position: absolute;
+    color: rgb(191, 227, 230);
+}
+
+.playername {
+    margin-left: 340px;
+    margin-top: 90px;
+}
+
+.comp {
+    margin-left: 600px;
+    margin-top: 90px;
+}
+
+.images {
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 30px;
+}
+
+.images button {
+    margin-right: 10px;
+    cursor: grab;
+    box-shadow: ghostwhite 4px 4px 4px;
+}
+
+.select {
+    position: absolute;
+    font-size: large;
+    color: blanchedalmond;
+    text-align: center;
+    margin-top: 200px;
+    padding-left: 50px ;
+    margin-left: 350px;
+}
+
+button {
+    border-radius: 20px;
+}
+
+.compselection {
+    position: absolute;
+    font-size: large;
+    text-align: center;
+    color: blanchedalmond;
+    margin-top: 150px;
+    padding-left: 50px ;
+    margin-left: 350px;
+}
+
+.winner {
+    background-color: rgb(13, 1, 41);
+    border: darkturquoise 4px solid;
+    height: 500px;
+    width: 80%;
+    padding: 70px;
+    margin: 20px 20px;
+    position: relative;
+}
+
+.test {
+    background-color: olive;
+    position: absolute;
+    margin-top: 300px;
+}
+</style>
+
+</head>
+<body>
+    
+        <div class="background" id="bg">
+            <div class="title">STONE PAPER SCISSOR</div>
+            <div class="new"><button id="newgame">New Game</button></div>
+            <div class="playername">My Score</div>
+            <div class="comp">Computer</div>
+            <div class="scores">
+                <div class="player-score" id="myScore">0</div>
+                <div class="separator">:</div>
+                <div class="comp-score" id="compScore">0</div>
+            </div>
+
+            <div class="compselection"><div class="compselectionis"></div> </div>
+            <div class="select">Select Any One</div>
+            <div class="images">
+                <button id="rock"><img src="./stone.jpg" alt="stone"></button>
+                <button id="paper"><img src="./paper.jpg" alt="paper"></button>
+                <button id="scissor"><img src="./scissor.jpg" alt="scissor"></button>              
+            </div>
+        </div>
+
+        <!-- <script type="Text/JavaScript" src="jsfile.js"></script> -->
+
+
+
+<script>
+var myScore,compScore,compNumber,compSelector;
+let userSelector;
+myScore = document.getElementById('myScore').textContent;
+compScore = document.getElementById('compScore').textContent;
+btn1 = document.getElementById('rock');
+btn2 = document.getElementById('paper');
+btn3 = document.getElementById('scissor');
+
+// console.log(btn1, btn2, btn3);
+
+// function for computer selection
+function compselectionGenerator(){
+    compNumber = Math.floor(Math.random() *3 +1);
+
+    //converting number to appropriate selection
+    if (compNumber === 1) {
+        compSelector = 'rock';
+    } else if (compNumber === 2) {
+        compSelector = 'paper';
+    } else if (compNumber === 3) {
+        compSelector = 'scissor';
+    }
+}
+
+// selection function for results
+function selection(userSelector) {
+    compselectionGenerator();
+    console.log(compSelector);
+    if (myScore <= 10 && compScore <= 10) {
+        if (compSelector === userSelector) {
+            myScore;
+            compScore;
+            // console.log(compScore);
+            // console.log('my score' +myScore);
+        } //rock 
+        else if (compSelector === 'rock' && userSelector === 'paper') {
+            myScore++;
+            // console.log('my score' +myScore);
+            // console.log(compScore);
+        }else if (compSelector === 'rock' && userSelector === 'scissor') {
+            compScore++;
+            // console.log('my score' +myScore);
+            // console.log(compScore);
+        } //paper
+        else if (compSelector === 'paper' && userSelector === 'rock') {
+            compScore++;
+            // console.log('my score' +myScore);
+            // console.log(compScore);
+        } else if (compSelector === 'paper' && userSelector === 'scissor') {
+            myScore++;
+            // console.log('my score' +myScore);
+            // console.log(compScore);
+        } // scissor
+        else if (compSelector === 'scissor' && userSelector === 'rock') {
+            myScore++;
+            // console.log('my score' +myScore);
+            // console.log(compScore);
+        }else if (compSelector === 'scissor' && userSelector === 'paper') {
+            compScore++;
+            // console.log('my score' +myScore);
+            // console.log(compScore);
+        } else {
+            console.log('invalid');
+        }
+    } else if (myScore >= 10 && compScore < 10) {
+        document.querySelector('.playername').textContent = 'Winner!';
+        document.querySelector('.background').classList.remove('background');
+        document.querySelector('#bg').classList.add('winner');
+        document.querySelector('.compselectionis').textContent = ' ';
+    } else if (myScore < 10 && compScore >= 10) {
+        document.querySelector('.comp').textContent = 'Winner!';
+        document.querySelector('.background').classList.remove('background');
+        document.querySelector('#bg').classList.add('winner');
+        document.querySelector('.compselectionis').textContent = ' ';
+    } else if (myScore === 10 && compScore === 10) {
+        document.querySelector('.compselectionis').textContent = 'match is draw!';
+        document.querySelector('.background').classList.remove('background');
+        document.querySelector('#bg').classList.add('winner');
+    }
+    
+document.getElementById('myScore').textContent = myScore;
+document.getElementById('compScore').textContent = compScore;
+document.querySelector('.compselectionis').textContent = 'Computer selection is: ' +compSelector;
+
+} // function ends..
+
+// rock click
+document.getElementById('rock').addEventListener('click', function(){
+   selection('rock');
+});
+
+// paper click
+document.getElementById('paper').addEventListener('click', function(){
+  selection('paper');
+});
+
+// scissor click
+document.getElementById('scissor').addEventListener('click', function(){
+    selection('scissor');
+});
+
+// new game click
+document.getElementById('newgame').addEventListener('click', function(){
+
+    myScore = 0;
+    compScore = 0;
+
+    document.querySelector('#myScore').textContent = 0;
+    document.querySelector('#compScore').textContent = 0;
+
+    document.getElementById('bg').classList.add('background');
+    document.getElementById('bg').classList.remove('winner');
+
+    document.querySelector('.playername').textContent = 'myScore';
+    document.querySelector('.comp').textContent = 'Computer';
+    document.querySelector('.compselectionis').textContent = "";
+    
+});
+</script>
+</body>
+</html>
